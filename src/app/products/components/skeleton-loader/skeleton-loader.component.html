@@ -1,0 +1,16 @@
+<div class="tableWrapper">
+  <table class="table">
+    <thead>
+      <tr>
+        <th *ngFor="let header of headers">{{header}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="loading" *ngFor="let header of headers">
+          <div class="bar"></div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

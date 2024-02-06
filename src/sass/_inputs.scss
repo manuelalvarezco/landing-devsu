@@ -1,0 +1,77 @@
+@import '_vars.scss';
+
+.input-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.input-container_item {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container_item .outline {
+  height: 2.5rem;
+  padding: 10px 16px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid $dark-color;
+  border-radius: 5px;
+  color: $dark-color;
+  background-color: $white-color;
+}
+
+.input-container_item input:focus{
+  opacity: 1;
+  outline: none;
+}
+
+/*Inputs outline*/
+
+.input-container_item input.outline.focus {
+  border: 2px solid $primary-color;
+}
+.input-container_item .outline-error {
+  border: 2px solid $danger-color;
+}
+.input-container_item input.outline:disabled{
+  border: none;
+  background-color: $dark-gray-color;
+}
+
+/*Inputs fill*/
+.input-container_item input.fill{
+  outline: none;
+  border: none;
+  border-radius: 5px 5px 0 0;
+  border-bottom: 1px solid $dark-gray-color;
+  background-color: $gray-color;
+}
+
+.input-container_item input.fill.focus{
+  border-bottom: 2px solid $primary-color;
+}
+
+.input-container_item input.fill:disabled{
+  background-color: $dark-gray-color;
+}
+
+.input-container_item input.fill.error{
+  border-bottom: 2px solid $danger-color;
+}
+
+.form-select {
+  background: white;
+  padding: 10px 16px;
+}
+
+.form-select select {
+  border: 1px solid $dark-gray-color;
+  border-radius: 5px;
+  height: 2.5em;
+  width: 100%;
+  padding: 8px;
+  outline: none;
+  background-color: transparent;
+}

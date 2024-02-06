@@ -1,0 +1,85 @@
+<div class="card">
+  <div class="buttons-group justify-space-between-lg">
+    <div class="input-container_item">
+      <input type="text" placeholder="Buscar por nombre" class="outline" [formControl]="filterQuery">
+    </div>
+    <div class="form-group">
+      <button class="button button_rounded-sm primary-button" [routerLink]="'create'">Agregar</button>
+    </div>
+  </div>
+  <div class="table-responsive mt-2">
+    <app-skeleton-loader [headers]="headers" *ngIf="loadingProducts"></app-skeleton-loader>
+    <table *ngIf="!loadingProducts">
+      <tr>
+        <th *ngFor="let header of headers">{{header}}</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let product of data">
+        <td>
+          <div class="rounded d-flex justify-content-center">
+            <img [src]="product.logo" [alt]="product.name" width="85">
+          </div>
+        </td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ getDate(product.date_release) | date:'dd/MM/YYYY' }}</td>
+        <td>{{ getDate(product.date_revision) | date:'dd/MM/YYYY' }}</td>
+        <td>
+          <div class="dropdown">
+            <svg (click)="openMenu(product)" class="pointer" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 5.92C12.5302 5.92 12.96 5.49019 12.96 4.96C12.96 4.42981 12.5302 4 12 4C11.4698 4 11.04 4.42981 11.04 4.96C11.04 5.49019 11.4698 5.92 12 5.92Z"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path
+                d="M12 12.96C12.5302 12.96 12.96 12.5302 12.96 12C12.96 11.4698 12.5302 11.04 12 11.04C11.4698 11.04 11.04 11.4698 11.04 12C11.04 12.5302 11.4698 12.96 12 12.96Z"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path
+                d="M12 20C12.5302 20 12.96 19.5702 12.96 19.04C12.96 18.5098 12.5302 18.08 12 18.08C11.4698 18.08 11.04 18.5098 11.04 19.04C11.04 19.5702 11.4698 20 12 20Z"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <div [ngClass]="{'d-none': !product.class, 'd-flex': product.class}" class="dropdown-content">
+              <button [routerLink]="'edit/' + product.id" class="button primary-button secondary-button">Editar</button>
+              <button class="button primary-button danger-button ml-2"
+                (click)="openModal('custom-modal-1', product)">Eliminar</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="mt-2 d-flex w-100 justify-space-between align-items-center">
+    <span class="ml-2">{{ data.length }} Resultados</span>
+    <div class="form-select" *ngIf="products.length > 5">
+      <select (change)="changePage($event)">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div *ngIf="showModal">
+  <app-modal id="custom-modal-1">
+    <div class="text-center">
+      <h3>¿Estas seguro de eliminar el producto {{productSelected?.name }}?</h3>
+      <div class="mt-2">
+        <app-spinner-loading *ngIf="loading"></app-spinner-loading>
+      </div>
+    </div>
+    <div class="buttons-group w-100">
+      <div class="form-group">
+        <button type="button" [disabled]="loading" (click)="closeModal('custom-modal-1')"
+          class="button button_rounded-sm contained">Cancelar</button>
+      </div>
+      <div class="form-group">
+        <button type="button" [disabled]="loading || openConfirmatioModal" (click)="deleteProduct()"
+        [ngClass]="{'danger-button': !loading }"
+          class="button button_rounded-sm ">Eliminar</button>
+      </div>
+    </div>
+  </app-modal>
+</div>
+<div *ngIf="openConfirmatioModal">
+  <app-snackbar [message]="message" (handleAccept)="closeConfirmationModal()"></app-snackbar>
+</div>

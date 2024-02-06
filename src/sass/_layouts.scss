@@ -1,0 +1,36 @@
+@import '_vars.scss';
+
+.tex-sm {
+  font-size: 12px;
+}
+
+.min-vh {
+  min-height: 55vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.w-100 {
+  width: 100%;
+}
+
+.w-750 {
+  width: 750px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.form-group {
+  padding: 12px;
+}
+
+.label-form {
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: $blue-color;
+}

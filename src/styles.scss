@@ -1,0 +1,44 @@
+@import './sass/_layouts';
+@import './sass/_inputs';
+@import './sass/_buttons';
+@import './sass/media-queries';
+@import './sass/tables';
+@import './sass/_colors';
+
+body {
+  font-family: 'OpenSans-Bold';
+}
+
+// Displays
+.d-flex {
+  display: flex;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.justify-space-between {
+  justify-content: space-between;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.align-items-center {
+  align-items: center;
+}
+
+// Margins
+.my-3 {
+  margin: 3em 0px;
+}
+.mt-3 {
+  margin-top: 3em;
+}
+.mt-2 {
+  margin-top: 2em;
+}
+.ml-2 {
+  margin-left: 12px;
+}
+.pointer {
+  cursor: pointer;
+}

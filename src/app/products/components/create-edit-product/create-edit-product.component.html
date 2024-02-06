@@ -1,0 +1,73 @@
+<div class="d-flex align-items-center justify-content-center min-vh">
+  <div class="w-750">
+    <h2 class="text-center">Formulario de Registro</h2>
+    <form class="form mt-2" [formGroup]="form">
+      <div id="outline" class="input-container_item">
+        <label class="label-form">ID</label>
+        <input type="text" placeholder="ID" [ngClass]="{'outline-error': !idField.valid && idField.touched }"
+          class="outline" formControlName="id">
+        <p class="danger-color tex-sm" *ngIf="existId">ID no válido</p>
+        <p class="danger-color tex-sm" *ngIf="!idField.valid && idField.touched && !idField.errors?.['minlength']">Este
+          campo es requerido!</p>
+        <p class="danger-color tex-sm" *ngIf="idField.errors?.['minlength']">El ID debe tener como mínimo 3 catacteres
+        </p>
+      </div>
+      <div id="outline" class="input-container_item">
+        <label class="label-form">Nombre Tarjeta</label>
+        <input type="text" placeholder="Tarjeta de crédito"
+          [ngClass]="{'outline-error': !nameField.valid && nameField.touched }" class="outline" formControlName="name">
+        <p class="danger-color tex-sm" *ngIf="!nameField.valid && nameField.touched && nameField.errors?.['minlength']">
+          Este campo es requerido!</p>
+        <p class="danger-color tex-sm" *ngIf="nameField.errors?.['minlength']">El nombre debe tener como mínimo 5
+          catacteres</p>
+      </div>
+      <div id="outline" class="input-container_item">
+        <label class="label-form">Descripción</label>
+        <input type="text" placeholder="Descripción"
+          [ngClass]="{'outline-error': !descriptionField.valid && descriptionField.touched }" class="outline"
+          formControlName="description">
+        <p class="danger-color tex-sm"
+          *ngIf="!descriptionField.valid && descriptionField.touched && descriptionField.errors?.['minlength']">Este
+          campo es requerido!</p>
+        <p class="danger-color tex-sm" *ngIf="descriptionField.errors?.['minlength']">La descripción debe tener como
+          mínimo 10 catacteres</p>
+      </div>
+      <div id="outline" class="input-container_item">
+        <label class="label-form">Logo</label>
+        <input type="text" placeholder="URL logo" [ngClass]="{'outline-error': !logoField.valid && logoField.touched }"
+          class="outline" formControlName="logo">
+        <p class="danger-color tex-sm" *ngIf="!logoField.valid && logoField.touched">Este campo es requerido</p>
+      </div>
+      <div id="outline" class="input-container_item">
+        <label class="label-form" for="date-release">Fecha de liberación</label>
+        <input type="date" id="date-release" name="date-release" class="outline" [value]="dateReleaseField.value"
+          formControlName="date_release" [min]="today">
+        <p class="danger-color tex-sm" *ngIf="!dateReleaseField.valid && dateReleaseField.touched">Este campo es
+          requerido!</p>
+      </div>
+      <div id="outline" class="input-container_item">
+        <label class="label-form" for="date-revision">Fecha de revisión</label>
+        <input type="date" id="date-revision" name="date-revision" class="outline" [value]="dateRevisionField.value"
+          formControlName="date_revision" />
+        <p class="danger-color tex-sm" *ngIf="!dateRevisionField.valid && dateRevisionField.touched">Este campo es
+          requerido!
+        </p>
+      </div>
+      <div class="buttons-group w-100">
+        <div class="form-group">
+          <button type="button" class="button button_rounded-sm contained" (click)="resetForm()">Reiniciar</button>
+        </div>
+        <div class="form-group">
+          <button *ngIf="!loading" [disabled]="!form.valid || loading || openModal" type="button"
+            [ngClass]="{'primary-button': form.valid }" class="button button_rounded-sm" (click)="saveEditForm()">
+            <span>Enviar</span>
+          </button>
+          <app-spinner-loading *ngIf="loading"></app-spinner-loading>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div *ngIf="openModal">
+  <app-snackbar [message]="message" (handleAccept)="closeModal()"></app-snackbar>
+</div>

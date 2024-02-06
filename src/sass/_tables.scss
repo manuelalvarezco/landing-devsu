@@ -1,0 +1,25 @@
+@import '_vars.scss';
+
+.table-responsive {
+  overflow-x:auto;
+  padding: 0 12px;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #F9FAFC;
+}
+
+th, td {
+  text-align: center;
+  color: $blue-color;
+  border-bottom: 1px solid #dddddd;
+  padding: 10px;
+  min-width: 100px;
+}

@@ -1,0 +1,85 @@
+@import '_vars.scss';
+
+.button {
+  padding: 0 16px;
+  height: 2.5rem;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.button_rounded-sm {
+  border-radius: $border-radius-sm;
+}
+
+.primary-button {
+  background-color: $primary-color;
+  color: $dark-color;
+}
+
+.danger-button {
+  background-color: $danger-color;
+  color: $white-color;
+}
+
+.secondary-button {
+  background-color: $blue-color;
+  color: $white-color;
+}
+
+.gray-button {
+  background-color: $dymgray-color;
+  color: $white-color;
+}
+
+.primary-button:hover, .danger-button:hover, .secondary-button:hover, .gray-button:hover {
+  -webkit-box-shadow: 0px 10px 5px -8px rgba(196,196,196,1);
+  -moz-box-shadow: 0px 10px 5px -8px rgba(196,196,196,1);
+  box-shadow: 0px 10px 5px -8px rgba(196,196,196,1);
+}
+
+.button.outlined {
+  border: 1px solid $primary-color;
+  color: $primary-color;
+  background-color: transparent;
+}
+.button.text {
+  border: none;
+  color: $primary-color;
+  background-color: transparent;
+}
+
+.button.icon {
+  background-color: $primary-color;
+  color: $white-color;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button.icon span {
+  margin-left: $border-radius-sm;
+}
+
+.btn-loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid  $primary-color;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+  }

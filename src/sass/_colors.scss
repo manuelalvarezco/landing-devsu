@@ -1,0 +1,14 @@
+@import '_vars.scss';
+
+.primary-color {
+  color: $primary-color;
+}
+.secondary-color {
+  color: $blue-color;
+}
+.danger-color {
+  color: $danger-color;
+}
+.white-color {
+  color: $white-color !important;
+}
